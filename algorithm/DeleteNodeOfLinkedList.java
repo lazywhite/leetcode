@@ -1,0 +1,58 @@
+/*
+ * DeleteNodeOfLinkedList.java
+ * Copyright (C) 2017 white <white@Whites-Mac-Air.lan>
+ *
+ * Distributed under terms of the MIT license.
+ *
+ *
+ * Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.
+ * Supposed the linked list is 1 -> 2 -> 3 -> 4 and you are given the third node with value 3, the linked list should become 1 -> 2 -> 4 after calling your function.
+ */
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) { val = x; }
+}
+
+public class DeleteNodeOfLinkedList
+{
+    public static String getVal(ListNode root) {
+        if(root == null){
+            return " ";
+        }
+        return root.val + " " + getVal(root.next);
+    }
+
+    public static void deleteNode(ListNode n) {
+        /*
+         * 删除一个节点， 就是递归把下一个节点的值赋给上一个节点
+         * 最后删除末尾的节点
+         */
+        if(n.next != null){
+            n.val = n.next.val;//存在下一个节点， 就覆盖节点的值
+        }
+        if(n.next.next == null){
+            n.next = null;//如果是倒数第二个节点， 则把末尾节点删除
+        }else{
+            deleteNode(n.next);
+        }
+    }
+
+    public static void main(String[] args){
+        ListNode n1 = new ListNode(1);
+        ListNode n2 = new ListNode(2);
+        ListNode n3 = new ListNode(3);
+        ListNode n4 = new ListNode(4);
+
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+
+        System.out.println(getVal(n1));
+        deleteNode(n2);
+        System.out.println(getVal(n1));
+
+
+    }
+}
+
