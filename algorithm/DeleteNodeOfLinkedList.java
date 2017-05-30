@@ -28,13 +28,12 @@ public class DeleteNodeOfLinkedList
          * 删除一个节点， 就是递归把下一个节点的值赋给上一个节点
          * 最后删除末尾的节点
          */
-        if(n.next != null){
-            n.val = n.next.val;//存在下一个节点， 就覆盖节点的值
-        }
-        if(n.next.next == null){
-            n.next = null;//如果是倒数第二个节点， 则把末尾节点删除
+        if (n.next == null){
+            return;//末尾节点不可删除
         }else{
-            deleteNode(n.next);
+            n.val = n.next.val;
+            n.next = n.next.next;
+
         }
     }
 
