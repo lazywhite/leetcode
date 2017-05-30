@@ -24,10 +24,6 @@ public class DeleteNodeOfLinkedList
     }
 
     public static void deleteNode(ListNode n) {
-        /*
-         * 删除一个节点， 就是递归把下一个节点的值赋给上一个节点
-         * 最后删除末尾的节点
-         */
         if (n.next == null){
             return;//末尾节点不可删除
         }else{
