@@ -15,20 +15,22 @@
  *        ↑  ↑
  */
 public class HammingDistance{
-    public static int getHamm(int x, int y){
-        String s = Integer.toBinaryString(x ^ y);
-        int count = 0;
-        byte[] a = s.getBytes();
-        for(int i=0;i<a.length;i++){
-            if(a[i] == 49){
-                count += 1;
-            }
+	public static int getHammingWeight(int num) {
+        int re = 0;
+        while(num != 0){
+            num = num & ( num - 1);
+            re++;
         }
-        return count;
+	    return re;	
+	}
+
+    public static int getHamm(int x, int y){
+        int num = x ^ y;
+        return getHammingWeight(num);
 
     }
 
     public static void main(String[] args){
-        System.out.println(getHamm(8, 6));
+        System.out.println(getHamm(8, 6)); //--> 3 
     }
 }
