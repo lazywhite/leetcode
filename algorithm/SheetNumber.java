@@ -4,37 +4,48 @@
  *
  * Distributed under terms of the MIT license.
  *
-    Given a column title as appear in an Excel sheet, return its corresponding column number.
+ Given a column title as appear in an Excel sheet, return its corresponding column number.
 
-    For example:
+ For example:
 
-        A -> 1
-        B -> 2
-        C -> 3
-        ...
-        Z -> 26
-        AA -> 27
-        AB -> 28 
+ A -> 1
+ B -> 2
+ C -> 3
+ ...
+ Z -> 26
+ AA -> 27
+ AB -> 28 
 
- *  自己实现26进制
+ *  自己实现27进制
  */
 
-public class SheetNumber
-{
-	public static int getChar(char c) {
-        return (int)c - 64;
-	}
-	public static String getStr(String str) {
-        StringBuilder strb = new StringBuilder();
-        for(int i=0;i<str.length();i++){
-            strb.append(getChar(str.charAt(i)));
+public class SheetNumber {
+    public static int getInt(char c) throws Exception{
+        if(c == '0'){
+            return 0;
         }
-        return strb.toString();
+        if(c > 'Z'){
+            throw new Exception("unlegal");
+        }
+        return c - 'A' + 1;
     }
-    public static void main(String[] args){
-        String s = "AB";
-        System.out.println(Integer.valueOf(getStr(s), 26));
-		
+
+    public static int getResult(String str) {
+        int result = 0;
+        try{
+            for(int i=0;i<str.length();i++){
+                int digit = getInt(str.charAt(i));
+                result += digit * Math.pow(27, i);
+            }
+        }catch(Exception e){
+            System.out.println("unlegal");
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        String s = "Z";
+        System.out.println(getResult(s));
     }
 }
 
