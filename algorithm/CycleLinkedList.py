@@ -42,7 +42,6 @@ def checkCircle(head):
             a.append(node)
         else:
             return True
-            break
         node = node.next
     return False
 
