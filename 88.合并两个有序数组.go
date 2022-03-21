@@ -24,14 +24,15 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 		}
 		tail--
 	}
-	if idx1 <= 0 && idx2 >= 0 {
+	// 某个队列已耗尽
+	if idx1 < 0 && idx2 >= 0 {
 		for idx2 >= 0 {
 			nums1[tail] = nums2[idx2]
 			idx2--
 			tail--
 		}
 	}
-	if idx2 <= 0 && idx1 >= 0 {
+	if idx2 < 0 && idx1 >= 0 {
 		for idx1 >= 0 {
 			nums1[tail] = nums1[idx1]
 			idx1--
