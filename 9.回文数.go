@@ -19,7 +19,7 @@ func isPalindrome(x int) bool {
 
 	for res < x {
 		res = res*10 + x%10
-		x = x / 10
+		x /= 10
 	}
 
 	if res == x || res/10 == x {

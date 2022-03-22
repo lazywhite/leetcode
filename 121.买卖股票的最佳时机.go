@@ -8,19 +8,18 @@
 func maxProfit(prices []int) int {
 
 	min := math.MaxInt32
-	max := 0
+	max := 0 // default 0
 	for i := 0; i < len(prices); i++ {
 		cur := prices[i]
 		if cur < min {
 			min = cur
 		}
-		if cur-min > max {
-			max = cur - min
+		profit := cur - min
+		if profit > max {
+			max = profit
 		}
 	}
-
 	return max
-
 }
 
 // @lc code=end
