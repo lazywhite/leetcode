@@ -24,7 +24,7 @@ func rob(nums []int) int {
 		return max(nums[0], nums[1])
 	}
 	/*
-	由于是环形的, 所以3个房屋其实是挨着的, 所以取最大值即可
+		由于是环形的, 所以3个房屋其实是挨着的, 所以取最大值即可
 	*/
 	if len(nums) == 3 {
 		return max(max(nums[0], nums[1]), nums[2])
@@ -52,6 +52,7 @@ func robIt(nums []int, start, end int) int {
 	}
 	return dp[end]
 }
+
 func max(x, y int) int {
 	if x > y {
 		return x
