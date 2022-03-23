@@ -1,8 +1,11 @@
+package main
+
 /*
  * @lc app=leetcode.cn id=191 lang=golang
  *
  * [191] 位1的个数
  */
+// 参考338 BK算法
 
 // @lc code=start
 func hammingWeight(num uint32) int {
@@ -18,4 +21,3 @@ func hammingWeight(num uint32) int {
 }
 
 // @lc code=end
-

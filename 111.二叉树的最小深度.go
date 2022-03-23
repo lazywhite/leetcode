@@ -4,10 +4,6 @@
  * [111] 二叉树的最小深度
  */
 
-package main
-
-import "math"
-
 // @lc code=start
 /**
  * Definition for a binary tree node.

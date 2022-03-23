@@ -10,7 +10,14 @@ func fib(n int) int {
 	// n==1 --> 1
 	// n==2 --> 1
 	// n==3 --> 2
-	dp := make([]int, n+2)
+	// n==4 --> 3
+	if n == 0 {
+		return 0
+	}
+	if n == 1 {
+		return 1
+	}
+	dp := make([]int, n+1)
 	dp[0] = 0
 	dp[1] = 1
 
