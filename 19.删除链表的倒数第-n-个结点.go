@@ -35,3 +35,22 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 
 // @lc code=end
 
+// 无法处理长度只有1的数组
+func oneMoreStep(head *ListNode, n int) *ListNode {
+
+	fast := head
+	slow := head
+
+	// 让fast多走1步
+	for i := 0; i <= n; i++ {
+		fast = fast.Next
+	}
+
+	// fast到末尾时, slow刚好走到-n的父节点
+	for fast != nil {
+		fast = fast.Next
+		slow = slow.Next
+	}
+	slow.Next = slow.Next.Next
+	return head
+}
