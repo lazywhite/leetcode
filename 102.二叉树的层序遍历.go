@@ -41,45 +41,6 @@ func main() {
 	fmt.Println(x)
 }
 
-/*
-func levelOrder(root *TreeNode) [][]int {
-	result := make([][]int, 0)
-	if root == nil{
-		return result
-	}
-
-	queue := []*TreeNode{root}
-
-	for len(queue) > 0 {
-		size := len(queue)
-
-		levelData := make([]int, 0)
-		for i := 0; i < size; i++ {
-			// get node
-			node := queue[0] //永远取行首的node
-			// append value
-			levelData = append(levelData, node.Val)
-
-			// 每次pop一个node
-			queue = queue[1:]
-			// put children into queue
-			if node.Left != nil{
-				queue = append(queue, node.Left)
-			}
-			if node.Right != nil{
-				queue = append(queue, node.Right)
-			}
-		}
-		//queue = queue[size:]
-		if len(levelData) > 0 {
-			result = append(result, levelData)
-		}
-	}
-	return result
-
-}
-
-*/
 
 // @lc code=start
 /**

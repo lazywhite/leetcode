@@ -10,10 +10,10 @@ func firstUniqChar(s string) int {
 	cache := [26]int{}
 
 	for i := range s {
-		cache[s[i]-'a']++
+		cache[s[i]-byte('a')]++
 	}
 	for i := range s {
-		if cache[s[i]-'a'] == 1 {
+		if cache[s[i]-byte('a')] == 1 {
 			return i
 		}
 	}

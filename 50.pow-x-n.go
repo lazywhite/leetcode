@@ -19,6 +19,8 @@ func myPow(x float64, n int) float64 {
 
 	return quick(x, n)
 }
+
+// 两分法
 func quick(x float64, n int) float64 {
 	if n == 0 {
 		return 1

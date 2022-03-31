@@ -7,12 +7,12 @@
 // @lc code=start
 func lengthOfLastWord(s string) int {
 	right := len(s) - 1
-	for s[right] == byte(32) {
+	for s[right] == ' ' {
 		right--
 	}
 	left := right
 
-	for left >= 0 && s[left] != byte(32)  {
+	for left >= 0 && s[left] != ' ' {
 		left--
 	}
 	return right - left

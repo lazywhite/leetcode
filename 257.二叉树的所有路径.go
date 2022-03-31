@@ -29,7 +29,7 @@ func binaryTreePaths(root *TreeNode) []string {
 			return
 		}
 		current := fmt.Sprintf("%s%d->", prefix, n.Val)
-		// 到达leaf node
+		// 只有leaf node才写将自己的path放入result
 		if n.Left == nil && n.Right == nil {
 			result = append(result, current[:len(current)-2])
 		}
