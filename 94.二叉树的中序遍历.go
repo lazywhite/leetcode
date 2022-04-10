@@ -15,9 +15,6 @@
  */
 func inorderTraversal(root *TreeNode) []int {
 	result := make([]int, 0)
-	// if root == nil {
-	// 	return result
-	// }
 
 	var inorder func(*TreeNode)
 	inorder = func(node *TreeNode) {
@@ -27,7 +24,6 @@ func inorderTraversal(root *TreeNode) []int {
 		inorder(node.Left)
 		result = append(result, node.Val)
 		inorder(node.Right)
-
 	}
 	inorder(root)
 	return result

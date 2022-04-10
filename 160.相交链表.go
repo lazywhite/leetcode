@@ -34,10 +34,9 @@ func getIntersectionNode(headA, headB *ListNode) *ListNode {
 	}
 	p1, p2 := headA, headB
 
-	//最差的情况, 两个指针都走了m+n个node,
-	// 相交部分为c
-	// 1. 如果不相交, 两者均为nil
-	// 2. 如果相交, 两者会在第一个交点相遇
+	//
+	// 1. 如果不相交, 两个指针都走了m+n个node, 最终均为nil
+	// 2. 如果相交, 两者会在第一个交点相遇, 相交部分为c, 则二者均走过m+n-c
 	for p1 != p2 {
 		if p1 == nil {
 			p1 = headB

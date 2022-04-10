@@ -17,24 +17,24 @@ func hasPathSum(root *TreeNode, targetSum int) bool {
 	if root == nil {
 		return false
 	}
-	return has(root, targetSum, 0)
-}
+	var has func(*TreeNode, int) bool
+	has = func(node *TreeNode, parentSum int) bool {
+		curVal := parentSum + node.Val
 
-func has(node *TreeNode, targetSum, parentSum int) bool {
-	curVal := parentSum + node.Val
+		if node.Left == nil && node.Right == nil {
+			return curVal == targetSum
+		}
 
-	if node.Left == nil && node.Right == nil {
-		return curVal == targetSum
+		leftHas, rightHas := false, false
+		if node.Left != nil {
+			leftHas = has(node.Left, curVal)
+		}
+		if node.Right != nil {
+			rightHas = has(node.Right, curVal)
+		}
+		return leftHas || rightHas
 	}
-
-	leftHas, rightHas := false, false
-	if node.Left != nil {
-		leftHas = has(node.Left, targetSum, curVal)
-	}
-	if node.Right != nil {
-		rightHas = has(node.Right, targetSum, curVal)
-	}
-	return leftHas || rightHas
+	return has(root, 0)
 }
 
 // @lc code=end

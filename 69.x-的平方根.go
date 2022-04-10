@@ -8,15 +8,17 @@
 func mySqrt(x int) int {
 
 	left, right := 0, x
-	ans := -1
+	ans := -1 // 永远存储mid的值
 	for left <= right {
 		mid := left + (right-left)/2
-		//中间数平方小于n, 左边界加1
-		if mid*mid <= x {
+		if mid*mid == x {
+			return mid
+		}
+		// 只有左边界发生改变, 才存储mid值
+		if mid*mid < x {
 			ans = mid
 			left = mid + 1
 		} else {
-			// 要省略小数部分, 因此右边界不保存结果
 			right = mid - 1
 		}
 	}

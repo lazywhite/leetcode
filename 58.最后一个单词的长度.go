@@ -6,16 +6,26 @@
 
 // @lc code=start
 func lengthOfLastWord(s string) int {
-	right := len(s) - 1
-	for s[right] == ' ' {
-		right--
-	}
-	left := right
+	end := len(s) - 1
 
-	for left >= 0 && s[left] != ' ' {
-		left--
+	for end >= 0 {
+		if s[end] != byte(' ') {
+			break
+		}
+		end--
 	}
-	return right - left
+
+	start := end
+
+	for start >= 0 {
+		if s[start] == byte(' ') {
+			break
+		}
+		start--
+	}
+
+	return end - start
+
 }
 
 // @lc code=end

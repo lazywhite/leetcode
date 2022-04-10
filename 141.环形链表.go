@@ -20,19 +20,22 @@ func hasCycle(head *ListNode) bool {
 	}
 
 	slow := head
-	fast := head.Next
+	fast := head
 
-	for slow != fast {
+	for fast != nil {
 		// 因为fast肯定最先达到nil, 因此可以不判断slow
-		//if slow == nil || fast == nil || fast.Next == nil {
-		if fast == nil || fast.Next == nil {
+		// fast已经到达了末尾, 说明无环
+		if fast.Next == nil {
 			return false
 		}
 		slow = slow.Next
 		fast = fast.Next.Next
-	}
-	return true
 
+		if fast == slow {
+			return true
+		}
+	}
+	return false
 }
 
 // @lc code=end

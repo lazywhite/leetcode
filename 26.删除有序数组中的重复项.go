@@ -6,19 +6,23 @@
 
 // @lc code=start
 func removeDuplicates(nums []int) int {
-	size := len(nums)
-	if size < 2 {
-		return size
-	}
-	left := 1
-	for right := 1; right < size; right++ {
-		if nums[right] != nums[right-1] {
-			// 直接用right值覆盖left
-			nums[left] = nums[right]
-			left++
+	left, right := 0, 1
+
+	for right < len(nums) {
+		if nums[left] != nums[right] {
+			if left != right {
+				nums[left+1] = nums[right]
+				left++
+			} else {
+				left++
+			}
 		}
+
+		right++
+
 	}
-	return left
+	// need size not index
+	return left + 1
 
 }
 

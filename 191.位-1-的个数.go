@@ -1,5 +1,3 @@
-package main
-
 /*
  * @lc app=leetcode.cn id=191 lang=golang
  *
@@ -11,11 +9,9 @@ package main
 func hammingWeight(num uint32) int {
 	count := 0
 
-	for i := 0; i < 32; i++ {
-		// 第i位为1, 结果才大于0
-		if 1<<i&num > 0 {
-			count++
-		}
+	for num > 0 {
+		num &= (num -1)
+		count++
 	}
 	return count
 }

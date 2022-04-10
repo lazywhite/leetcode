@@ -14,9 +14,11 @@
  * }
  */
 func isSameTree(p *TreeNode, q *TreeNode) bool {
+	// 全部为nil
 	if p == nil && q == nil {
 		return true
 	}
+	// 其中一个为nil
 	if p == nil || q == nil {
 		return false
 	}

@@ -21,13 +21,10 @@ func Constructor() FreqStack {
 }
 
 func (this *FreqStack) Push(val int) {
-	if v, ok := this.Val2Freq[val]; ok {
-		this.Val2Freq[val] = v + 1
-	} else {
-		this.Val2Freq[val] = 1
-	}
+	v := this.Val2Freq[val]
 
-	freq := this.Val2Freq[val]
+	freq := v + 1
+	this.Val2Freq[val] = freq
 
 	if this.MaxFreq < freq {
 		this.MaxFreq = freq

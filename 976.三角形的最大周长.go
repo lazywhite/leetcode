@@ -8,7 +8,7 @@
 
 // @lc code=start
 func largestPerimeter(nums []int) int {
-	sort(nums)
+	sort.Ints(nums)
 
 	for i := len(nums) - 1; i >= 2; i-- {
 		if nums[i-2]+nums[i-1] > nums[i] {
@@ -16,17 +16,6 @@ func largestPerimeter(nums []int) int {
 		}
 	}
 	return 0
-}
-
-func sort(nums []int) {
-	for i := 1; i < len(nums); i++ {
-		for j := 0; j < len(nums)-i; j++ {
-			if nums[j] > nums[j+1] {
-				nums[j], nums[j+1] = nums[j+1], nums[j]
-			}
-
-		}
-	}
 }
 
 // @lc code=end

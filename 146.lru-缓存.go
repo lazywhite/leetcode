@@ -38,6 +38,12 @@ type LRUCache struct {
 	Cache    map[int]*Node
 }
 
+/*
+	1. hashtable缓存
+	2. 双向链表
+	3. 最新访问过的, 放在tail
+	4. 超出capacity, 删掉head
+*/
 func Constructor(capacity int) LRUCache {
 	head := NewNode(-1, 0)
 	tail := NewNode(-100, 0)
@@ -60,16 +66,6 @@ func NewNode(key, value int) *Node {
 	}
 }
 
-// 如果不存在返回-1, 存在需要将其放在tail
-func (this *LRUCache) Get(key int) int {
-	n, ok := this.Cache[key]
-	if !ok {
-		return -1
-	}
-	this.move2Tail(n)
-	return n.Value
-}
-
 // 首先将其从原位置删除, 然后添加到tail
 func (this *LRUCache) move2Tail(n *Node) {
 	this.removeNode(n)
@@ -89,6 +85,16 @@ func (this *LRUCache) addTail(n *Node) {
 func (this *LRUCache) removeNode(n *Node) {
 	n.Pre.Next = n.Next
 	n.Next.Pre = n.Pre
+}
+
+// 如果不存在返回-1, 存在需要将其放在tail
+func (this *LRUCache) Get(key int) int {
+	n, ok := this.Cache[key]
+	if !ok {
+		return -1
+	}
+	this.move2Tail(n)
+	return n.Value
 }
 
 func (this *LRUCache) Put(key int, value int) {

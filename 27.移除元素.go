@@ -8,20 +8,20 @@
 // 双指针法, 将等于val的值全部移动到右面
 func removeElement(nums []int, val int) int {
 
-	// 存储第一个值为val的index
-	slowIdx := 0
+	left, right := 0, 0
 
-	for fastIdx := 0; fastIdx < len(nums); fastIdx++ {
-		if nums[fastIdx] != val {
-			if slowIdx != fastIdx {
-				swap(nums, slowIdx, fastIdx)
+	for right < len(nums) {
+		if nums[right] != val {
+			if left == right {
+				left++
+			} else {
+				swap(nums, left, right)
+				left++
 			}
-			// 可能连续多个item都为val, 因此只能加1
-			slowIdx++
 		}
+		right++
 	}
-	nums = nums[:slowIdx]
-	return slowIdx
+	return left
 }
 
 func swap(arr []int, i, j int) {

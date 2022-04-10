@@ -13,9 +13,6 @@ func myPow(x float64, n int) float64 {
 	if n < 0 {
 		return 1.0 / quick(x, -n)
 	}
-	if n == 0 {
-		return 1
-	}
 
 	return quick(x, n)
 }
@@ -24,6 +21,9 @@ func myPow(x float64, n int) float64 {
 func quick(x float64, n int) float64 {
 	if n == 0 {
 		return 1
+	}
+	if n == 1 {
+		return x
 	}
 
 	y := quick(x, n/2)

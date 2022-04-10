@@ -5,22 +5,23 @@
  */
 
 // @lc code=start
-func findDisappearedNumbers(nums []int) []int {
-	// nums并不包含0, 创建包含n+1个元素的slice
-	bitmap := make([]int, len(nums)+1)
-
-	for i := 0; i < len(nums); i++ {
-		bitmap[nums[i]] += 1
+func findDisappearedNumbers(nums []int) (ans []int) {
+	/*
+		下标范围(0, n-1)
+		值范围(1, n)
+	*/
+	n := len(nums)
+	for _, v := range nums {
+		v = v % n // 取到增加前的值
+		idx = v - 1 // 此值对应的index
+		nums[idx] += n
 	}
-
-	result := make([]int, 0)
-	// 跳过index=0
-	for i := 1; i < len(bitmap); i++ {
-		if bitmap[i] == 0 {
-			result = append(result, i)
+	for i, v := range nums {
+		if v <= n {
+			ans = append(ans, i+1)
 		}
 	}
-	return result
+	return
 
 }
 

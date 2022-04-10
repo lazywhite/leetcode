@@ -65,12 +65,7 @@ func levelOrder(root *TreeNode) [][]int {
 		for i := 0; i < size; i++ {
 			// get node
 			node := queue[i]
-			// 如果没做nil值过滤, 这里需要加
-			/*
-				if node == nil {
-					continue
-				}
-			*/
+
 			// append value
 			levelData = append(levelData, node.Val)
 
@@ -82,7 +77,6 @@ func levelOrder(root *TreeNode) [][]int {
 			if node.Right != nil {
 				queue = append(queue, node.Right)
 			}
-			// queue = append(queue, node.Left, node.Right)
 		}
 		// 最后整体pop
 		queue = queue[size:]

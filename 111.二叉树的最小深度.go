@@ -45,13 +45,6 @@ func minDepth(root *TreeNode) int {
 	return count
 }
 
-func min(x, y int) int {
-	if x < y {
-		return x
-	}
-	return y
-}
-
 // @lc code=end
 
 // 深度优先
@@ -70,4 +63,11 @@ func minDepth(root *TreeNode) int {
 		minD = min(minDepth(root.Right), minD)
 	}
 	return minD + 1
+}
+
+func min(x, y int) int {
+	if x < y {
+		return x
+	}
+	return y
 }
