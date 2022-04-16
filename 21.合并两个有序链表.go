@@ -26,12 +26,10 @@ func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 		// 认为list1为head
 		list1.Next = mergeTwoLists(list1.Next, list2)
 		return list1
-	} else {
-		// 认为list2为head
-		list2.Next = mergeTwoLists(list2.Next, list1)
-		return list2
 	}
-	return nil
+	// 认为list2为head
+	list2.Next = mergeTwoLists(list2.Next, list1)
+	return list2
 }
 
 // @lc code=end

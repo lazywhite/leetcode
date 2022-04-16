@@ -11,8 +11,8 @@ type LFUCache struct {
 	MinFreq   int
 	Freq2Node map[int][]*Node // queue
 	Key2Node  map[int]*Node   // 元素的访问次数
-
 }
+
 type Node struct {
 	Key   int
 	Value int
