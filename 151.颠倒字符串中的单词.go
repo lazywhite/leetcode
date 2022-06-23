@@ -66,33 +66,42 @@
  */
 package main
 
+import (
+	"strings"
+	"fmt"
+)
+
 func main() {
 	s := "the sky is blue"
-	reverseWords(s)
+	fmt.Println(reverseWords(s))
 }
 
 // @lc code=start
 func reverseWords(s string) string {
 
-	result := []byte{}
+	result := new(strings.Builder)
 
-	for i := len(s) - 1; i >= 0; i-- {
-		ans := []byte{}
-		hasWord := false
-		for i >= 0 && s[i] == byte(' ') {
-			i--
+	i := len(s) - 1
+
+	for i >= 0{
+		j := i
+		for j >= 0 && s[j] == byte(' ') {
+			j--
 		}
-		for i >= 0 && s[i] != byte(' ') {
-			hasWord = true
-			ans = append([]byte{s[i]}, ans...)
-			i--
+		end := j
+		for j >= 0 && s[j] != byte(' ') {
+			j--
 		}
-		if hasWord {
-			ans = append(ans, byte(' '))
-			result = append(result, ans...)
-		}
+		start := j
+
+		result.Write([]byte(s[start+1:end+1]))
+		result.WriteByte(byte(' '))
+
+
+		i = j
 	}
-	return string(result[:len(result)-1])
+	rt := result.String()
+	return string(rt[:len(rt)-1])
 }
 
 // @lc code=end
