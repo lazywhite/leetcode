@@ -19,7 +19,6 @@ class Solution(object):
             else:
                 tmp[i] = 1
         q = [(val, key) for key, val in tmp.items()]
-        heapq.heapify(q)
         return [e[1] for e in heapq.nlargest(k, q)]
 # @lc code=end
 
