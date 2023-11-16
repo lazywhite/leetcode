@@ -47,7 +47,7 @@ func minDepth(root *TreeNode) int {
 
 // @lc code=end
 
-// 深度优先
+/* 深度优先
 func minDepth(root *TreeNode) int {
 	if root == nil {
 		return 0
@@ -71,3 +71,4 @@ func min(x, y int) int {
 	}
 	return y
 }
+*/
