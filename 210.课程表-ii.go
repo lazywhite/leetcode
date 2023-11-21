@@ -9,9 +9,9 @@ func findOrder(numCourses int, prerequisites [][]int) []int {
 	// 构造有向图, 进行拓扑排序, 使用深度优先算法
 	var (
 		// 有向边(a, b), 如果b依赖a, 则 a -> b
-		edges = make([][]int, numCourses) // 下标为课程编号, 存储其指向的课程
+		edges = make([][]int, numCourses) // 下标为课程编号, 存储其指向的课程, 必须有size
 		// 顶点的入度
-		indegree = make([]int, numCourses)
+		indegree = make([]int, numCourses) // 必须有size
 		result   = make([]int, 0)
 	)
 

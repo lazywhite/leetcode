@@ -21,7 +21,7 @@ class NumArray(object):
         '''
         利用数组构造一个segment tree
             size = len(nums)
-            middle = start + (end = start) // 2
+            middle = start + (end - start) // 2
             left child负责[start, middle]
             right child负责[middle+1, end]
         递归地构造出某个node的所有子node
