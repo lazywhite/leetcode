@@ -12,7 +12,9 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 	tail := m + n - 1
 
 	/*
-		双指针法, 从后向前排序
+		如果使用归并排序, 需要额外的m+n长度数组, 空间复杂度较高
+		nums1长度已经是m+n了, 后半部分是空的
+		逆向双指针法, 可以保证nums1元素不会被覆盖
 	*/
 	for idx1 >= 0 && idx2 >= 0 {
 		if nums2[idx2] >= nums1[idx1] {

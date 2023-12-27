@@ -11,6 +11,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        # 贪心算法+动态窗口(双指针)
         tmp = {}
         slow = 0
         fast = 0

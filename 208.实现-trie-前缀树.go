@@ -6,72 +6,45 @@
 
 // @lc code=start
 type Trie struct {
-	Head *Node
-}
-
-type Node struct {
-	Char     byte
-	IsEnd    bool
-	Children map[byte]*Node
+	children [26]*Trie
+	isEnd    bool
 }
 
 func Constructor() Trie {
-	head := &Node{
-		Char:  0,
-		Children: make(map[byte]*Node, 0),
-		IsEnd: false,
-	}
-	t := Trie{
-		Head:     head,
-	}
-	return t
+	return Trie{}
 }
 
-func (this *Trie) Insert(word string) {
-	curNode := this.Head
-	for i := range word {
-		char := word[i]
-		if node, ok := curNode.Children[char]; !ok {
-			n := &Node{
-				Char: char,
-				Children: make(map[byte]*Node, 0),
-			}
-			curNode.Children[char] = n
-			curNode = n
-
-		} else {
-			curNode = node
+func (t *Trie) Insert(word string) {
+	node := t
+	for _, ch := range word {
+		ch -= 'a'
+		if node.children[ch] == nil {
+			node.children[ch] = &Trie{}
 		}
+		node = node.children[ch]
 	}
-
-	curNode.IsEnd = true
+	node.isEnd = true
 }
 
-func (this *Trie) Search(word string) bool {
-	curNode := this.Head
-	for i := range word {
-		char := word[i]
-		if node, ok := curNode.Children[char]; !ok {
-			return false
-		} else {
-			curNode = node
+func (t *Trie) SearchPrefix(prefix string) *Trie {
+	node := t
+	for _, ch := range prefix {
+		ch -= 'a'
+		if node.children[ch] == nil {
+			return nil
 		}
+		node = node.children[ch]
 	}
-	return curNode.IsEnd
+	return node
 }
 
-func (this *Trie) StartsWith(prefix string) bool {
-	curNode := this.Head
-	for i := range prefix {
-		char := prefix[i]
-		if node, ok := curNode.Children[char]; !ok {
-			return false
-		} else {
-			curNode = node
-		}
-	}
-	return true
+func (t *Trie) Search(word string) bool {
+	node := t.SearchPrefix(word)
+	return node != nil && node.isEnd
+}
 
+func (t *Trie) StartsWith(prefix string) bool {
+	return t.SearchPrefix(prefix) != nil
 }
 
 /**

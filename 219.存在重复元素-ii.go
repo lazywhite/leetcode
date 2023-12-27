@@ -13,13 +13,9 @@ func containsNearbyDuplicate(nums []int, k int) bool {
 			if abs(v, i) <= k {
 				return true
 			}
-
-			// 将最大的index放入cache
-			cache[nums[i]] = i
-
-		} else {
-			cache[nums[i]] = i
 		}
+		// 将最大的index放入cache
+		cache[nums[i]] = i
 	}
 	return false
 }

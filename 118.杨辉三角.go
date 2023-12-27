@@ -14,10 +14,9 @@ func generate(numRows int) [][]int {
 		rt[i] = make([]int, i+1) // 每一层初始化
 		rt[i][0] = 1
 		rt[i][i] = 1
-		for j := 1; j < i; j++ {
+		for j := 1; j < i; j++ { // 直到i=2才满足条件
 			rt[i][j] = rt[i-1][j-1] + rt[i-1][j]
 		}
-
 	}
 	return rt
 }

@@ -67,8 +67,8 @@
 package main
 
 import (
-	"strings"
 	"fmt"
+	"strings"
 )
 
 func main() {
@@ -83,20 +83,22 @@ func reverseWords(s string) string {
 
 	i := len(s) - 1
 
-	for i >= 0{
+	for i >= 0 {
 		j := i
-		for j >= 0 && s[j] == byte(' ') {
+		for j >= 0 && s[j] == ' ' {
 			j--
 		}
+		if j < 0 {
+			break
+		}
 		end := j
-		for j >= 0 && s[j] != byte(' ') {
+		for j >= 0 && s[j] != ' ' {
 			j--
 		}
 		start := j
 
-		result.Write([]byte(s[start+1:end+1]))
-		result.WriteByte(byte(' '))
-
+		result.WriteString(s[start+1 : end+1])
+		result.WriteString(" ")
 
 		i = j
 	}

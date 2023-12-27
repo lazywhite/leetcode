@@ -6,50 +6,24 @@
 
 // @lc code=start
 func reverseVowels(s string) string {
-	c := map[string]int{
-		"a": 1,
-		"e": 1,
-		"i": 1,
-		"o": 1,
-		"u": 1,
-		"A": 1,
-		"E": 1,
-		"I": 1,
-		"O": 1,
-		"U": 1,
-	}
-	size := len(s)
-	left := 0
-	right := size - 1
-
+	pt := "aeiouAEIOU"
 	t := []byte(s)
-
-	for left < right {
-		for left < size {
-			_, ok := c[string(t[left])]
-			if ok {
-				break
-			}
-			left++
+	n := len(t)
+	i, j := 0, n-1
+	for i < j {
+		for i < n && !strings.Contains(pt, string(t[i])) {
+			i++
 		}
-		for right >= 0 {
-			_, ok := c[string(t[right])]
-			if ok {
-				break
-			}
-			right--
+		for j > 0 && !strings.Contains(pt, string(t[j])) {
+			j--
 		}
-		if left < right {
-			swap(t, left, right)
-			left++
-			right--
+		if i < j {
+			t[i], t[j] = t[j], t[i]
+			i++
+			j--
 		}
 	}
 	return string(t)
-}
-
-func swap(s []byte, x, y int) {
-	s[x], s[y] = s[y], s[x]
 }
 
 // @lc code=end
